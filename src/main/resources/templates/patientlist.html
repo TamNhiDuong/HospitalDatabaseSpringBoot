@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>Hospital database management system</title>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+	<h1>Hospital database management system</h1>
+	<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+	<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
+		</form>
+	
+	<table  class="table table-striped">
+		<thead>
+			<tr>
+				<th>Full name</th>
+				<th>Phone number</th>
+				<th>Gender</th>
+				<th>Height (cm)</th>
+				<th>Weight (kg)</th>
+				<th>Health issues</th>
+				<th>Doctor</th>
+				<th sec:authorize="hasAuthority('ADMIN')">Delete</th>
+				<th sec:authorize="hasAuthority('ADMIN')">Edit</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="patient:${patients}">
+				<td th:text="${patient.firstname} + ' ' + ${patient.lastname}"></td>
+				<td th:text="${patient.phonenumber}"></td>
+				<td th:text="${patient.gender}"></td>
+				<td th:text="${patient.height}"></td>
+				<td th:text="${patient.weight}"></td>
+				<td th:text="${patient.healthissue}"></td>
+				<td th:text="${patient.doctor.name}"></td> 
+				
+				 <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${patient.id})}" class="btn btn-danger">Delete</a></td> 
+				 <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/edit/{id}(id=${patient.id})}">Edit</a></td>
+				 
+			</tr>
+
+		</tbody>
+	</table>
+	<a href="/add" class="btn btn-success">Add More Patients</a>  
+</body>
+</html>

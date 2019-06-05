@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hospital database management system</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Add more Patients to the system</h1>
+	<div>
+		<form th:object="${patient}" th:action="@{save}" action="#" method="post">
+		  	<label for="firstname">First name</label>
+			<input type="text" id="firstname" th:field="*{firstname}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+		  	<label for="lastname">Last name</label>
+			<input type="text" id="lastname" th:field="*{lastname}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="phonenumber">Phone number</label>
+			<input type="text" th:field="*{phonenumber}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+		  	<label for="gender">Gender</label>
+			<input type="text" th:field="*{gender}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="height">Height</label>
+			<input type="text" th:field="*{height}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="weight">Weight</label>
+			<input type="text" th:field="*{weight}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="healtissue">Health issues</label>
+			<input type="text" th:field="*{healthissue}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<!-- Add a drop-list -->
+			<div style="clear: both; display: block; height: 10px;"></div>						
+		  	<label for="doclist">Doctors</label>
+			 <select id="doclist" th:field="*{doctor}" class="form-control">
+       			<option th:each="doctor: ${doctors}" th:value="${doctor.doctorid}" th:text="${doctor.name}"></option>
+    		</select>
+			
+			<input type="submit" value="Save"></input>
+		</form>
+	</div>
+</body>
+</html>
+<!--* means it is attribute and belongs to object Patient-->
+<!--*{firstname} : it must be exactly like the attributes in Patient.java-->

@@ -1,0 +1,55 @@
+ <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>login</title>
+
+<!--<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width" />
+<base href="/" />
+<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="/webjars/font-awesome/css/font-awesome.min.css"></link>-->
+
+
+</head>
+<body>
+
+	<div class="col-md-4 col-md-offset-4">
+		<div class="alert alert-danger" th:if="${param.error}">Invalid
+			username and password.</div>
+		<div class="alert alert-warning" th:if="${param.logout}">You
+			have been logged out.</div>
+		<form th:action="@{/login}" method="post">
+			<div>
+				<label> User Name : <input type="text" name="username"
+					class="form-control" />
+				</label>
+			</div>
+			<div>
+				<label> Password: <input type="password" name="password"
+					class="form-control" />
+				</label>
+			</div>
+			<div>
+				<input type="submit" value="Sign In" class="btn btn-primary" />
+			</div>
+		</form>
+		<a th:href="@{/signup}">Sign-up</a>
+	</div>
+
+	<!-- Login by social media -->
+	
+	</div>
+
+</body>
+</html>

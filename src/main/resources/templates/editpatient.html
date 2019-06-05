@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Edit Patient</title>
+<meta http-equiv = "Content-Type" content = "text/html" charset="UTF-8">
+</head>
+<body>
+<h1>Edit Patient information</h1>
+<div>
+<form th:object="${patient}" th:action="@{../save}" action="#" method="post">
+<input type="hidden" th:field="*{id}" class="form-control"/>
+
+<label for="firstname">First name</label>
+<input type="text" id="firstname" th:field="*{firstname}" />
+<br>
+<label for="lastname">Last name</label>
+<input type="text" id="lastname" th:field="*{lastname}" />
+<br>
+<label for="phonenumber">Phone number</label>
+<input type="text" th:field="*{phonenumber}" />
+<br>
+<label for="gender">Gender</label>
+<input type="text" th:field="*{gender}" />
+<br>
+<label for="height">Height</label>
+<input type="text" th:field="*{height}" />
+<br>
+<label for="weight">Weight</label>
+<input type="text" th:field="*{weight}" />
+<br>
+<br>
+<label for="healthissue">Health issue</label>
+<input type="text" th:field="*{healthissue}" />
+<br>
+<label for="doclist">Doctor</label>
+			<select id="doclist" th:field="*{doctor}" class="form-control">
+				<option th:each="doctor: ${doctor}"
+					th:value="${doctor.doctorid}" th:text="${doctor.name}"></option>
+<input type="submit" class="btn btn-success" value="Save"></input>
+
+</form>
+</div>
+
+</body>
+</html>
