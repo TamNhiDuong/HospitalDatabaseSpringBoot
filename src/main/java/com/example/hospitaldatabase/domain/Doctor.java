@@ -23,11 +23,11 @@ public class Doctor {
 			super();
 			this.name = name;
 		}
-		public Long getDoctorId() {
+		public Long getDoctorid() {
 			return doctorid;
 		}
 		
-		public void setDoctorId(Long doctorid) {
+		public void setDoctorid(Long doctorid) {
 			this.doctorid = doctorid;
 		}
 		

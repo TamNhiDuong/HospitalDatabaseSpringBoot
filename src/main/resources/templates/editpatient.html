@@ -36,7 +36,7 @@
 <label for="doclist">Doctor</label>
 			<select id="doclist" th:field="*{doctor}" class="form-control">
 				<option th:each="doctor: ${doctor}"
-					th:value="${doctor.doctorid}" th:text="${doctor.name}"></option>
+					th:value="${doctor.doctorid}" th:text="${doctor.name}"></option></select>
 <input type="submit" class="btn btn-success" value="Save"></input>
 
 </form>

@@ -38,8 +38,8 @@
 			
 			<!-- Add a drop-list -->
 			<div style="clear: both; display: block; height: 10px;"></div>						
-		  	<label for="doclist">Doctors</label>
-			 <select id="doclist" th:field="*{doctor}" class="form-control">
+		  	<label for="deplist">Doctors</label>
+			 <select id="deplist" th:field="*{doctor}" class="form-control">
        			<option th:each="doctor: ${doctors}" th:value="${doctor.doctorid}" th:text="${doctor.name}"></option>
     		</select>
 			

@@ -7,14 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.hospitaldatabase.domain.DoctorRepository;
 import com.example.hospitaldatabase.domain.Patient;
 import com.example.hospitaldatabase.domain.PatientRepository;
+import com.example.hospitaldatabase.service.PatientService;
 
 @Controller
 public class PatientController {
@@ -23,6 +26,10 @@ public class PatientController {
 
 	@Autowired
 	private DoctorRepository crepository;
+	
+	// Search service
+		@Autowired
+		private PatientService patientService;
 
 	@RequestMapping(value = "/login")
 	public String login() {
@@ -76,5 +83,17 @@ public class PatientController {
 	public @ResponseBody Optional<Patient> findPatinetRest(@PathVariable("id") Long patientId) {
 		return repository.findById(patientId);
 	}
+	
+	// SEARCH function
+		@GetMapping("/patient/search")
+		public String search(@RequestParam("s") String s, Model model) {
+			if (s.equals("")) {
+				return "redirect:/patientlist";
+			}
+
+			model.addAttribute("patients", patientService.search(s));
+			return "patientlist";
+		}
+
 
 }

@@ -13,6 +13,22 @@
 			<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
 		</form>
 	
+	<!-- Search function -->
+		<br>
+			<form class="form-inline pull-right" action="#"
+				th:action="@{/patient/search}" method="GET">
+				<div class="form-group">
+					<input type="text" class="form-control" name="s"
+						placeholder="Type patient last name..." />
+				</div>
+				<button type="submit" class="btn btn-primary">Search</button>
+			</form>
+		
+		<th:block th:if="${#lists.isEmpty(patients)}">
+			<h3>No employee</h3>
+		</th:block>
+	<br>
+	
 	<table  class="table table-striped">
 		<thead>
 			<tr>
