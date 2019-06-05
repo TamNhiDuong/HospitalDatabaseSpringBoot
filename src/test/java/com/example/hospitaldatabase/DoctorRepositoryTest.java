@@ -27,7 +27,7 @@ public class DoctorRepositoryTest {
         
         List<Doctor> doctors = drepository.findByName("Jim Morgan");
         assertThat(doctors).hasSize(1);
-        assertThat(doctors.get(0).getDoctorId()).isNotNull();
+        assertThat(doctors.get(0).getDoctorid()).isNotNull();
     }
     
     //Test if I can delete a doctor by id
