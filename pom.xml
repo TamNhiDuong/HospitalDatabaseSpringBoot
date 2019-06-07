@@ -10,6 +10,7 @@
 		<version>2.1.4.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>com.example</groupId>
 	<artifactId>hospitaldatabase</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -18,6 +19,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<commons-lang3.version>3.3.2</commons-lang3.version>
 	</properties>
 
 	<dependencies>
@@ -59,25 +61,41 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.thymeleaf.extras</groupId>
-			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
-		</dependency>
-
-		<dependency>
 			<groupId>org.assertj</groupId>
 			<artifactId>assertj-core</artifactId>
-			</dependency>
+		</dependency>
+
+		<!-- Security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+		</dependency>
+
 
 		<!-- Adding login by social network -->
-		
+
+		<dependency>
+			<groupId>org.springframework.social</groupId>
+			<artifactId>spring-social-facebook</artifactId>
+			<version>3.0.0.M1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.social</groupId>
+			<artifactId>spring-social-core</artifactId>
+			<version>2.0.0.M2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.social</groupId>
+			<artifactId>spring-social-config</artifactId>
+			<version>2.0.0.M2</version>
+		</dependency>
 
 
-		<!-- Adding BootStrap, JQuery, font-awesome -->
+		<!-- Adding BootStrap, JQuery, font-awesome, etc -->
 
 		<dependency>
 			<groupId>org.webjars</groupId>
@@ -91,8 +109,14 @@
 		</dependency>
 
 	</dependencies>
-	<!-- Adding repositories -->
-	
+	<!-- Adding repositories, artifacts -->
+	<repositories>
+		<repository>
+			<id>alfresco-public</id>
+			<url>https://artifacts.alfresco.com/nexus/content/groups/public</url>
+		</repository>
+	</repositories>
+
 
 	<build>
 		<plugins>
@@ -102,5 +126,6 @@
 			</plugin>
 		</plugins>
 	</build>
+	
 
 </project>

@@ -14,6 +14,7 @@ import com.example.hospitaldatabase.domain.UserRepository;
 
 import javax.validation.Valid;
 
+
 @Controller
 public class UserController {
 	@Autowired

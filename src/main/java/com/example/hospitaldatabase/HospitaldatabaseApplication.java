@@ -5,7 +5,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.example.hospitaldatabase.domain.Doctor;
 import com.example.hospitaldatabase.domain.DoctorRepository;
@@ -15,7 +18,10 @@ import com.example.hospitaldatabase.domain.User;
 import com.example.hospitaldatabase.domain.UserRepository;
 
 @SpringBootApplication
-public class HospitaldatabaseApplication {
+//add
+//@EnableJpaRepositories("com.example.hospitaldatabase.domain.User")
+//@EntityScan("com.example.hospitaldatabase.persistence.domain.UserRepository")
+public class HospitaldatabaseApplication extends SpringBootServletInitializer {
 
 	private static final Logger log = LoggerFactory.getLogger(HospitaldatabaseApplication.class);
 
@@ -34,16 +40,16 @@ public class HospitaldatabaseApplication {
 			drepository.save(new Doctor("Katri Halonen"));
 
 			Patient patient1 = new Patient("Stephene", "Mike", "0461567829", "male", 178, 60, "heart desease",
-					drepository.findByName("Jim Morgan").get(0));
+					drepository.findByName("Jim Morgan").get(0),"https://i.ibb.co/cNZn9sR/6.jpg");
 			Patient patient2 = new Patient("Johnson", "John", "0461560225", "male", 181, 120, "obesity desease",
-					drepository.findByName("Anton Ashley").get(0));
+					drepository.findByName("Anton Ashley").get(0),"https://i.ibb.co/j3Q8svV/7.jpg");
 			Patient patient3 = new Patient("Kate", "Winslet", "0461556729", "female", 165, 55, "blood pressure",
-					drepository.findByName("Jim Morgan").get(0));
+					drepository.findByName("Jim Morgan").get(0),"https://i.ibb.co/vHk2XgC/4.jpg" );
 			Patient patient4 = new Patient("Adam", "Smith", "0462406643", "male", 188, 90, "headache",
-					drepository.findByName("Katri Halonen").get(0));
+					drepository.findByName("Katri Halonen").get(0),"https://i.ibb.co/phGbvFx/3.jpg");
 			Patient patient5 = new Patient("Mika", "Hamalainen", "0462400093", "male", 186, 92, "stomach sick",
-					drepository.findByName("Katri Halonen").get(0));
-
+					drepository.findByName("Katri Halonen").get(0),"https://i.ibb.co/FHYFhbM/5.jpg");
+			
 			repository.save(patient1);
 			repository.save(patient2);
 			repository.save(patient3);

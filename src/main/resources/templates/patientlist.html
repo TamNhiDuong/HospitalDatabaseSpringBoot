@@ -1,65 +1,132 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <title>Hospital database management system</title>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600"
+	rel="stylesheet" />
+<link rel='stylesheet prefetch'
+	href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' />
+<link rel='stylesheet prefetch'
+	href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' />
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous" />
+
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+	integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+	crossorigin="anonymous">
+
+<link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-	<h1>Hospital database management system</h1>
-	<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
-	<form th:action="@{/logout}" method="post">
-			<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
-		</form>
+
+	<!-- A little bit front-end navigation bar -->
+
+	<section id="header">
+	<form class="form-inline pull-right" th:action="@{/logout}" method="post">
+							<input type="submit" value="Sign Out"
+								class="btn btn-sm btn-danger" />
+						</form>
+		<div class="container">
+			<div class="row" id="title">
+				<div class="col-xs-12">
+					<div class="welcome">
+						<h3 th:inline="text">Welcome
+							[[${#httpServletRequest.remoteUser}]]</h3>
+						<h4>Hospital database management system</h4>
+						<h6>Contact me via</h6>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-12">
+			<div class="social">
+				<div class="row">
+					<div class="mx-auto">
+						<!-- First -->
+						<a
+							href="https://www.behance.net/gallery/52536825/Logo-and-Companys-Identity-Designs-by-Nhi-Duong">
+							<div class="icon rounded-circle">
+								<i class="fab fa-behance"></i>
+							</div>
+						</a>
+						<!-- Second -->
+						<a href="https://github.com/TamNhiDuong">
+							<div class="icon rounded-circle">
+								<i class="fab fa-github"></i>
+							</div>
+						</a>
+						<!-- Third -->
+						<a href="https://www.flickr.com/photos/127822906@N05/"
+							target="_blank">
+							<div class="icon rounded-circle">
+								<i class="fab fa-flickr"></i>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section id="patient-list">
 	
 	<!-- Search function -->
-		<br>
-			<form class="form-inline pull-right" action="#"
-				th:action="@{/patient/search}" method="GET">
-				<div class="form-group">
-					<input type="text" class="form-control" name="s"
-						placeholder="Type patient last name..." />
-				</div>
-				<button type="submit" class="btn btn-primary">Search</button>
-			</form>
-		
-		<th:block th:if="${#lists.isEmpty(patients)}">
-			<h3>No employee</h3>
-		</th:block>
+	<br>
+	<form class="form-inline pull-right" action="#"
+		th:action="@{/patient/search}" method="GET">
+		<div class="form-group">
+			<input type="text" class="form-control" name="s"
+				placeholder="Type patient last name..." />
+		</div>
+		<button type="submit" class="btn btn-primary">Search</button>
+	</form>
+	<th:block th:if="${#lists.isEmpty(patients)}">
+		<h3>No employee</h3>
+	</th:block>
 	<br>
 	
-	<table  class="table table-striped">
-		<thead>
-			<tr>
-				<th>Full name</th>
-				<th>Phone number</th>
-				<th>Gender</th>
-				<th>Height (cm)</th>
-				<th>Weight (kg)</th>
-				<th>Health issues</th>
-				<th>Doctor</th>
-				<th sec:authorize="hasAuthority('ADMIN')">Delete</th>
-				<th sec:authorize="hasAuthority('ADMIN')">Edit</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="patient:${patients}">
-				<td th:text="${patient.firstname} + ' ' + ${patient.lastname}"></td>
-				<td th:text="${patient.phonenumber}"></td>
-				<td th:text="${patient.gender}"></td>
-				<td th:text="${patient.height}"></td>
-				<td th:text="${patient.weight}"></td>
-				<td th:text="${patient.healthissue}"></td>
-				<td th:text="${patient.doctor.name}"></td> 
-				
-				 <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${patient.id})}" class="btn btn-danger">Delete</a></td> 
-				 <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/edit/{id}(id=${patient.id})}">Edit</a></td>
-				 
-			</tr>
+	<!-- Add function -->
+	<a href="/add" class="btn btn-success">Add More Patients</a>
+	
+		<div class="container">
+     	<div class="row allpatients">
+				<div class="col-md-2 col-sm-4 patient-item"
+					th:each="patient : ${patients}">
+					<div class="inner-patient"></div>
+					<div class="img-wrap rounded-circlei">
+						<div class="patient-hover">
 
-		</tbody>
-	</table>
-	<a href="/add" class="btn btn-success">Add More Patients</a>  
+							<img th:src="${patient.img}" class="img-responsive"
+								th:alt="${patient.firstname}" />
+						</div>
+					</div>
+					</a>
+					<div class="patient-caption">
+						<h4 th:text="${patient.firstname} + ' ' + ${patient.lastname}"></h4>
+						<p th:text="${patient.gender}" class="text-muted"></p>
+						<p th:text="${patient.phonenumber}"></p>
+						<p th:text="${patient.height}"></p>
+						<p th:text="${patient.weight}"></p>
+						<p th:text="${patient.healthissue}"></p>
+						<h4>Doctor:</h4>
+						<h4 th:text="${patient.doctor.name}"></h4>
+						<a sec:authorize="hasAuthority('ADMIN')" class="btn btn-warning"
+							th:href="@{/edit/{id}(id=${patient.id})}">Edit</a> <a
+							sec:authorize="hasAuthority('ADMIN')" class="btn btn-danger"
+							th:href="@{/delete/{id}(id=${patient.id})}">Delete</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
 </body>
 </html>

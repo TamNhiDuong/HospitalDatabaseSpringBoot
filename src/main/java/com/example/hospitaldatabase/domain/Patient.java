@@ -22,6 +22,7 @@ public class Patient {
 	private int height;
 	private int weight;
 	private String healthissue;
+	private String img;
 	
 	@ManyToOne
 	@JoinColumn(name = "doctor")
@@ -30,7 +31,7 @@ public class Patient {
 	public Patient() {}
 
 	public Patient(String firstname, String lastname, String phonenumber, String gender, int height, int weight, String healthissue,
-			Doctor doctor) {
+			Doctor doctor,String img) {
 		super();
 
 		this.firstname = firstname;
@@ -41,7 +42,17 @@ public class Patient {
 		this.weight = weight;
 		this.healthissue = healthissue;
 		this.doctor = doctor;
+		this.img = img;
 	}
+	
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
 
 	public long getId() {
 		return id;

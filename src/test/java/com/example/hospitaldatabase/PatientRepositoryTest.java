@@ -33,7 +33,7 @@ public class PatientRepositoryTest {
 	    //Check if I can create new patient?
 	    @Test
 	    public void createNewPatient() {
-	    	Patient newPatient = new Patient("Tanja", "Radler", "0469664201", "female", 165, 50, "headache", new Doctor("Jenne Woo"));
+	    	Patient newPatient = new Patient("Tanja", "Radler", "0469664201", "female", 165, 50, "headache", new Doctor("Jenne Woo"),"https://i.ibb.co/FHYFhbM/5.jpg");
 	    	repository.save(newPatient);
 	    	assertThat(newPatient.getId()).isNotNull();
 	    }  

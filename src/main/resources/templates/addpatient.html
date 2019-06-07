@@ -42,6 +42,9 @@
 			 <select id="deplist" th:field="*{doctor}" class="form-control">
        			<option th:each="doctor: ${doctors}" th:value="${doctor.doctorid}" th:text="${doctor.name}"></option>
     		</select>
+    		<label for="img">Img</label>
+			<input type="text" id="img" th:field="*{img}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
 			
 			<input type="submit" value="Save"></input>
 		</form>
