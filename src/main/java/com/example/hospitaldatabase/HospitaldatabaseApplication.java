@@ -5,10 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.example.hospitaldatabase.domain.Doctor;
 import com.example.hospitaldatabase.domain.DoctorRepository;
@@ -47,7 +45,7 @@ public class HospitaldatabaseApplication extends SpringBootServletInitializer {
 					drepository.findByName("Jim Morgan").get(0),"https://i.ibb.co/vHk2XgC/4.jpg" );
 			Patient patient4 = new Patient("Adam", "Smith", "0462406643", "male", 188, 90, "headache",
 					drepository.findByName("Katri Halonen").get(0),"https://i.ibb.co/phGbvFx/3.jpg");
-			Patient patient5 = new Patient("Mika", "Hamalainen", "0462400093", "male", 186, 92, "stomach sick",
+			Patient patient5 = new Patient("Jenni", "Hamalainen", "0462400093", "male", 186, 92, "stomach sick",
 					drepository.findByName("Katri Halonen").get(0),"https://i.ibb.co/FHYFhbM/5.jpg");
 			
 			repository.save(patient1);

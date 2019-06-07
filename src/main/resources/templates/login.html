@@ -1,41 +1,58 @@
- <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-	crossorigin="anonymous">
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<link rel="stylesheet" href="css/styleLogin.css" />
 <title>login</title>
-
-
-
 </head>
 <body>
-
 	<div class="col-md-4 col-md-offset-4">
 		<div class="alert alert-danger" th:if="${param.error}">Invalid
 			username and password.</div>
 		<div class="alert alert-warning" th:if="${param.logout}">You
 			have been logged out.</div>
-		<form th:action="@{/login}" method="post">
-			<div>
-				<label> User Name : <input type="text" name="username"
-					class="form-control" />
-				</label>
-			</div>
-			<div>
-				<label> Password: <input type="password" name="password"
-					class="form-control" />
-				</label>
-			</div>
-			<div>
-				<input type="submit" value="Sign In" class="btn btn-primary" />
-			</div>
-		</form>
-		<a th:href="@{/signup}">Sign-up</a>
 	</div>
+	<!-- Multiple languages -->
+
+	<div
+		style="text-align: left; padding: 5px; margin: 5px 0px; background: #ccc;">
+		<a th:href="@{/login?lang=en}">Login (English)</a> &nbsp;|&nbsp; <a
+			th:href="@{/login?lang=fi}">Kirjaudu sisään (Suomi)</a> &nbsp;|&nbsp;
+		<a th:href="@{/login?lang=vi}">Đăng nhập (Vietnamese)</a>
+	</div>
+	
+
+
+	<form th:action="@{/login}" method="post">
+		<div>
+			<label> <strong th:utext="#{messages.username}"></strong> <input
+				type="text" name="username" class="form-control" />
+			</label>
+		</div>
+		<div>
+			<label> <strong th:utext="#{messages.password}"></strong> <input
+				type="password" name="password" class="form-control" />
+			</label>
+		</div>
+		<div>
+			<input type="submit" class="btn btn-success"
+				th:value="#{messages.username}">
+		</div>
+	</form>
+	<a th:href="@{/signup}"> </a>
+
+	<!-- Alert BOX -->
+	<div class="alertbox">
+		<span class="closebtn"
+			onclick="this.parentElement.style.display='none';">&times;</span> <strong>Hi!</strong>
+		You can sign in with username= "admin", password= "admin"!
+	</div>
+
 
 	<!-- Login by social media -->
 

@@ -18,6 +18,18 @@ body {
 	margin-top: 50px;
 	padding: 0 30%;
 }
+.lang{
+	text-align: left; 
+	color: white;
+}
+.lang:hover {
+	color: #f7c216;
+	text-color: #f7c216;
+}
+.lang1:hover {
+	color: #f7c216;
+	text-color: #f7c216;
+}
 
 
 #footer i {
@@ -90,17 +102,6 @@ a:hover, a:visited, a:link, a:active {
 	min-height: 70px;
 }
 
-#footer {
-	position: relative;
-	min-height: 100px;
-	background: #333;
-	color: white;
-	padding: 20px;
-}
-
-#footer i {
-	font-size: 2em;
-}
 
 .contact-icons i {
 	margin-left: 5px;
