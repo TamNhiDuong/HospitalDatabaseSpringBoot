@@ -1,11 +1,10 @@
 body {
-	font-family: 'Cabin', sans-serif;
+	font-family: 'Gothic A1', sans-serif;
 }
 
 #header {
 	position: relative;
-	background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-		url("cover.jpg");
+	background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
 	background-size: cover;
 	background-position: center;
 	width: 100%;
@@ -15,7 +14,7 @@ body {
 
 .welcome {
 	text-align: center;
-	margin-top: 50px;
+	margin-top: 30px;
 	padding: 0 30%;
 }
 .lang{
@@ -31,10 +30,6 @@ body {
 	text-color: #f7c216;
 }
 
-
-#footer i {
-	font-size: 2em;
-}
 
 .group {
 	margin: 20px 0px;

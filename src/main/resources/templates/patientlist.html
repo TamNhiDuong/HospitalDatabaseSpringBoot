@@ -4,6 +4,7 @@
 <head>
 <title>Hospital database management system</title>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+
 <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600"
 	rel="stylesheet" />
 <link rel='stylesheet prefetch'
@@ -39,8 +40,7 @@
 			<div class="row" id="title">
 				<div class="col-xs-12">
 					<div class="welcome">
-						<h3 th:utext="#{content.welcome}">Welcome to
-							[[${#httpServletRequest.remoteUser}]]</h3>
+						<h3 th:utext="#{content.welcome}">Welcome</h3> <h3>[[${#httpServletRequest.remoteUser}]]</h3>
 						<h4 th:utext="#{content.title}">Hospital database management system</h4>
 						<h6 th:utext="#{content.visit}">Visit me on</h6>
 					</div>
@@ -81,7 +81,7 @@
 
 	<section id="patient-list">
 		<!-- Search function -->
-		<div class="searchbox">
+		
 			<br>
 			<form class="form-inline pull-right" action="#"
 				th:action="@{/patient/search}" method="GET">
@@ -95,7 +95,7 @@
 				<h3>No employee</h3>
 			</th:block>
 			<br>
-		</div>
+	
 
 		<!-- Add function -->
 		<a href="/add" class="btn btn-success">Add More Patients</a>

@@ -5,8 +5,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+
 
 import com.example.hospitaldatabase.domain.Doctor;
 import com.example.hospitaldatabase.domain.DoctorRepository;
@@ -16,10 +18,9 @@ import com.example.hospitaldatabase.domain.User;
 import com.example.hospitaldatabase.domain.UserRepository;
 
 @SpringBootApplication
-//add
-//@EnableJpaRepositories("com.example.hospitaldatabase.domain.User")
-//@EntityScan("com.example.hospitaldatabase.persistence.domain.UserRepository")
-public class HospitaldatabaseApplication extends SpringBootServletInitializer {
+//To be able to authenticate by Facebook
+
+public class HospitaldatabaseApplication  extends SpringBootServletInitializer{
 
 	private static final Logger log = LoggerFactory.getLogger(HospitaldatabaseApplication.class);
 

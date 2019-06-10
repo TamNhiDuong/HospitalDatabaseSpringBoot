@@ -2,12 +2,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+
+<link type="text/css" rel="stylesheet" href="/css/socialbutton.css"
+	th:href="@{css/socialbutton.css}" />
 <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css"
 	th:href="@{css/bootstrap.min.css}" />
+<link type="text/css" rel="stylesheet" href="/css/bootstrap-social.css"
+	th:href="@{css/bootstrap-social.css}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <link rel="stylesheet" href="css/styleLogin.css" />
+<link xmlns:th="http://www.thymeleaf.org" />
 <title>login</title>
 </head>
 <body>
@@ -17,34 +25,52 @@
 		<div class="alert alert-warning" th:if="${param.logout}">You
 			have been logged out.</div>
 	</div>
-	<!-- Multiple languages -->
 
+	<!-- Multiple languages -->
 	<div
 		style="text-align: left; padding: 5px; margin: 5px 0px; background: #ccc;">
 		<a th:href="@{/login?lang=en}">Login (English)</a> &nbsp;|&nbsp; <a
 			th:href="@{/login?lang=fi}">Kirjaudu sisään (Suomi)</a> &nbsp;|&nbsp;
 		<a th:href="@{/login?lang=vi}">Đăng nhập (Vietnamese)</a>
 	</div>
-	
 
 
-	<form th:action="@{/login}" method="post">
-		<div>
-			<label> <strong th:utext="#{messages.username}"></strong> <input
-				type="text" name="username" class="form-control" />
-			</label>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+				<div class="card card-signin my-5">
+					<div class="card-body">
+						<form th:action="@{/login}" method="post">
+
+							<div class="form-label-group">
+								<strong th:utext="#{messages.username}"></strong> <input
+									type="text" name="username" class="form-control" />
+							</div>
+
+
+							<div class="form-label-group">
+								<strong th:utext="#{messages.password}"></strong> <input
+									type="password" name="password" class="form-control" />
+							</div>
+							<br>
+							<div align="center">
+								<input type="submit" class="btn btn-success"
+									th:value="#{messages.signin}">
+							</div>
+						</form>
+					
+
+						<!-- Sign up -->
+						<div align="center">
+							<a th:href="@{/signup}">Sign-up</a>
+						</div>
+
+					</div>
+				</div>
+			</div>
 		</div>
-		<div>
-			<label> <strong th:utext="#{messages.password}"></strong> <input
-				type="password" name="password" class="form-control" />
-			</label>
-		</div>
-		<div>
-			<input type="submit" class="btn btn-success"
-				th:value="#{messages.username}">
-		</div>
-	</form>
-	<a th:href="@{/signup}"> </a>
+	</div>
+
 
 	<!-- Alert BOX -->
 	<div class="alertbox">
@@ -52,9 +78,6 @@
 			onclick="this.parentElement.style.display='none';">&times;</span> <strong>Hi!</strong>
 		You can sign in with username= "admin", password= "admin"!
 	</div>
-
-
-	<!-- Login by social media -->
 
 </body>
 </html>
