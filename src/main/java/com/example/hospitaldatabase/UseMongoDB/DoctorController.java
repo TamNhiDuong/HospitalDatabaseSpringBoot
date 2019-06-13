@@ -23,16 +23,6 @@ public class DoctorController {
 		model.addAttribute("doctors", repository.findAll());
 		return "doctorlist";
 	}
-	
-	@PreAuthorize("hasAuthority('ADMIN')")
-	@RequestMapping(value = "/addnew")
-	public String addPatient(Model model) {
-		// content of the method is completely empty new object
-		model.addAttribute("doctor", new DoctorDetails());
-		model.addAttribute("addresss", arepository.findAll());
-		// go to new html-end-point
-		return "adddoctor";
-	}
 
 	@PreAuthorize("hasAuthority('ADMIN')")
 	@RequestMapping(value = "/deletedoctor/{id}", method = RequestMethod.GET)
@@ -41,16 +31,5 @@ public class DoctorController {
 		return "redirect:../doctorlist";
 	}
 
-	@RequestMapping(value = "/savedoctor", method = RequestMethod.POST)
-	public String save(DoctorDetails doctor) {
-		repository.save(doctor);
-		return "redirect:doctorlist";
-	}
 
-	@RequestMapping(value = "/editnew/{id}")
-	public String edit(@PathVariable("id") String doctorId, Model model) {
-		model.addAttribute("doctor", repository.findById(doctorId));
-		model.addAttribute("address", arepository.findAll());
-		return "editdoctor";
-	}
 }

@@ -13,6 +13,4 @@ public interface DoctorDetailsRepository extends CrudRepository<DoctorDetails, L
 	 List<DoctorDetails> findByLastname(String lastname);
 
 	void deleteById(String doctorId);
-
-	Doctor findById(String doctorId);
 }
