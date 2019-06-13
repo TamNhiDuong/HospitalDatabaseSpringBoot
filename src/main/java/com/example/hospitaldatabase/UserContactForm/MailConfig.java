@@ -23,6 +23,7 @@ public class MailConfig {
 
     @Value("${spring.mail.properties.mail.debug}")
     private String debug;
+    
     @Bean
     public JavaMailSender javaMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();

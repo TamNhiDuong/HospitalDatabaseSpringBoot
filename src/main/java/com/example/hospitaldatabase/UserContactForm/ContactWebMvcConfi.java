@@ -13,7 +13,7 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 
 
 @Configuration
-public class ThymeleafWebMvcConfi extends WebMvcConfigurerAdapter {
+public class ContactWebMvcConfi extends WebMvcConfigurerAdapter {
 
 
     @Bean
