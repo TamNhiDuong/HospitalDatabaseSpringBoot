@@ -1,4 +1,4 @@
-package com.example.hospitaldatabase.web;
+package com.example.hospitaldatabase.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -37,7 +37,7 @@ public class PatientController {
 	}
 
 	@RequestMapping("/patientlist")
-	public String bookList(Model model) {
+	public String patientList(Model model) {
 		model.addAttribute("patients", repository.findAll());
 		return "patientlist";
 	}

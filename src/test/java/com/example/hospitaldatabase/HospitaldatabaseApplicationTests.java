@@ -8,8 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.example.hospitaldatabase.web.PatientController;
-//import com.example.hospitaldatabase.web.UserDetailServiceImpl;
+import com.example.hospitaldatabase.controller.PatientController;
 
 
 @RunWith(SpringRunner.class)

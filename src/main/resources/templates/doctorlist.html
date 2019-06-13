@@ -22,8 +22,7 @@
 </head>
 <body>
 	<!-- A little bit front-end-->
-
-
+	<!-- SECTION 1 -->
 	<section id="header">
 		<form class="form-inline pull-right" th:action="@{/logout}"
 			method="post">
@@ -31,10 +30,10 @@
 		</form>
 		<div class="container">
 			<div class="lang">
-				<a class="lang1" th:href="@{/patientlist?lang=en}">Login
+				<a class="lang1" th:href="@{/doctorlist?lang=en}">Login
 					(English)</a> &nbsp;|&nbsp; <a class="lang1"
-					th:href="@{/patientlist?lang=fi}">Kirjaudu sisään (Suomi)</a>
-				&nbsp;|&nbsp; <a class="lang1" th:href="@{/patientlist?lang=vi}">Đăng
+					th:href="@{/doctorlist?lang=fi}">Kirjaudu sisään (Suomi)</a>
+				&nbsp;|&nbsp; <a class="lang1" th:href="@{/doctorlist?lang=vi}">Đăng
 					nhập (Vietnamese)</a>
 			</div>
 			<div class="row" id="title">
@@ -48,9 +47,8 @@
 					</div>
 				</div>
 			</div>
-
-
 		</div>
+
 		<div class="col-12">
 			<div class="social">
 				<div class="row">
@@ -81,67 +79,42 @@
 		</div>
 	</section>
 
-
+	<!-- SECTION 2 -->
 	<section id="patient-list">
-	<!-- Navigation bar to go to new DATABASE table-->
+		<!-- Navigation bar to go to new DATABASE table-->
 		<ul>
 			<li><a class="active" href="/patientlist">Home</a></li>
 			<li><a th:href="@{/doctorlist}">Doctor list</a></li>
 			<li><a th:href="@{doctordb/all}">Raw data</a></li>
 			<li><a th:href="@{/form}">Contact</a></li>
 		</ul>	
-		<!-- Search function -->
-
-		<br>
-		<form class="form-inline pull-right" action="#"
-			th:action="@{/patient/search}" method="GET">
-			<div class="form-group">
-				<input type="text" class="form-control" name="s"
-					placeholder="Type patient last name..." />
-			</div>
-			<button type="submit" class="btn btn-primary">Search</button>
-		</form>
-		<th:block th:if="${#lists.isEmpty(patients)}">
-			<h3>No employee</h3>
-		</th:block>
-		<br>
-
-
 		<!-- Add function -->
-		<a href="/add" class="btn btn-success">Add More Patients</a>
-
+		<!-- <a href="/addnew" class="btn btn-success">Add More Doctors</a>-->
+	
 		<div class="container">
 			<div class="row allpatients">
 				<div class="col-md-2 col-sm-4 patient-item"
-					th:each="patient : ${patients}">
+					th:each="doctor : ${doctors}">
 					<div class="inner-patient"></div>
 					<div class="img-wrap rounded-circlei">
 						<div class="patient-hover">
 
-							<img th:src="${patient.img}" class="img-responsive"
-								th:alt="${patient.firstname}" />
+							<img th:src="${doctor.img}" class="img-responsive"
+								th:alt="${doctor.firstname}" />
 						</div>
 					</div>
 
 					<div class="patient-caption">
-						<h4 th:text="${patient.firstname} + ' ' + ${patient.lastname}"></h4>
-						<p th:text="${patient.gender}" class="text-muted"></p>
-						<p th:text="${patient.phonenumber}"></p>
-						<p th:text="${patient.height} + cm"></p>
-						<p th:text="${patient.weight} + kg"></p>
-						<h3 th:text="${patient.healthissue}"></h3>
-						<h4 th:text="Doctor  + ' ' + ${patient.doctor.name}"></h4>
-						<a sec:authorize="hasAuthority('ADMIN')" class="btn btn-warning"
-							th:href="@{/edit/{id}(id=${patient.id})}">Edit</a> <a
-							sec:authorize="hasAuthority('ADMIN')" class="btn btn-danger"
-							th:href="@{/delete/{id}(id=${patient.id})}">Delete</a>
+						<h4 th:text="${doctor.firstname} + ' ' + ${doctor.lastname}"></h4>
+						<h4 th:text="Price  + ' ' + ${doctor.pricePerHour} + ' '+Euro"></h4>
+						<h4 th:text="Address  + ' ' + ${doctor.address.city}"></h4>
+						<a sec:authorize="hasAuthority('ADMIN')" class="btn btn-danger"
+							th:href="@{/deletedoctor/{id}(id=${doctor.id})}">Delete</a>
 					</div>
 				</div>
 			</div>
 		</div>
-		
 	</section>
 
-	
 </body>
 </html>

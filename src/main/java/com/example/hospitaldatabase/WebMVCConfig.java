@@ -1,5 +1,6 @@
 package com.example.hospitaldatabase;
- 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -13,7 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
-import com.example.hospitaldatabase.web.UserDetailServiceImpl;
+import com.example.hospitaldatabase.controller.UserDetailServiceImpl;
  
 @Configuration
 public class WebMVCConfig implements WebMvcConfigurer {
@@ -29,7 +30,6 @@ public class WebMVCConfig implements WebMvcConfigurer {
         resolver.setCookieMaxAge(60*60); 
         return resolver;
     } 
-    
     
      
     @Bean(name = "messageSource")
@@ -50,6 +50,7 @@ public class WebMVCConfig implements WebMvcConfigurer {
          
         registry.addInterceptor(localeInterceptor).addPathPatterns("/*");
     }
+ 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
     	auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());

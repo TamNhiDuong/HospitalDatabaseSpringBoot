@@ -52,4 +52,3 @@ public class Doctor {
 			return "Doctor [doctorid=" + doctorid + ", doctorname=" + name + "]";
 		}
 	}
-
